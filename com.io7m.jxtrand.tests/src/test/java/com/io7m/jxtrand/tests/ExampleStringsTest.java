@@ -18,6 +18,7 @@ package com.io7m.jxtrand.tests;
 
 import com.io7m.jxtrand.examples.ExampleStrings0;
 import com.io7m.jxtrand.examples.ExampleStrings1;
+import com.io7m.jxtrand.examples.ExampleStrings2;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -32,10 +33,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public final class ExampleStrings0Test
+public final class ExampleStringsTest
 {
   @Test
-  public void testOpen()
+  public void testExample0()
     throws IOException
   {
     final var strings = new ExampleStrings0();
@@ -57,8 +58,30 @@ public final class ExampleStrings0Test
   }
 
   @Test
-  public void testOpenNonexistent()
+  public void testExample1()
   {
     assertThrows(NoSuchFileException.class, ExampleStrings1::new);
+  }
+
+  @Test
+  public void testExample2()
+    throws IOException
+  {
+    final var strings = new ExampleStrings2();
+    assertEquals("Example 2", strings.format("example2"));
+    assertNotNull(strings.resources());
+
+    final var spliterator =
+      Spliterators.spliteratorUnknownSize(
+        strings.resources().getKeys().asIterator(),
+        Spliterator.ORDERED
+      );
+
+    final var keys =
+      StreamSupport.stream(spliterator, false)
+        .collect(Collectors.toSet());
+
+    assertEquals(1, keys.size());
+    assertTrue(keys.contains("example2"));
   }
 }

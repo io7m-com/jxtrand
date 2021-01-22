@@ -20,6 +20,10 @@ import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
 
 import java.io.IOException;
 
+/**
+ * An example where the resource is exported.
+ */
+
 public final class ExampleStrings0 extends JXTAbstractStrings
 {
   public ExampleStrings0()

@@ -21,14 +21,14 @@ import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
 import java.io.IOException;
 
 /**
- * An example where the resource is nonexistent.
+ * An example where the resource is not exported.
  */
 
-public final class ExampleStrings1 extends JXTAbstractStrings
+public final class ExampleStrings2 extends JXTAbstractStrings
 {
-  public ExampleStrings1()
+  public ExampleStrings2()
     throws IOException
   {
-    super(ExampleStrings1.class, "/com/io7m/jxtrand/examples/Nonexistent");
+    super(ExampleStrings2.class, "/com/io7m/jxtrand/examples/internal/Messages.xml");
   }
 }
