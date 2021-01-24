@@ -19,10 +19,13 @@ package com.io7m.jxtrand.tests;
 import com.io7m.jxtrand.examples.ExampleStrings0;
 import com.io7m.jxtrand.examples.ExampleStrings1;
 import com.io7m.jxtrand.examples.ExampleStrings2;
+import com.io7m.jxtrand.examples.ExampleStrings3;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.util.Locale;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.Collectors;
@@ -39,7 +42,7 @@ public final class ExampleStringsTest
   public void testExample0()
     throws IOException
   {
-    final var strings = new ExampleStrings0();
+    final var strings = new ExampleStrings0(Locale.ENGLISH);
     assertEquals("Example 0", strings.format("example0"));
     assertNotNull(strings.resources());
 
@@ -60,14 +63,14 @@ public final class ExampleStringsTest
   @Test
   public void testExample1()
   {
-    assertThrows(NoSuchFileException.class, ExampleStrings1::new);
+    assertThrows(FileNotFoundException.class, () -> new ExampleStrings1(Locale.ENGLISH));
   }
 
   @Test
   public void testExample2()
     throws IOException
   {
-    final var strings = new ExampleStrings2();
+    final var strings = new ExampleStrings2(Locale.ENGLISH);
     assertEquals("Example 2", strings.format("example2"));
     assertNotNull(strings.resources());
 
@@ -83,5 +86,23 @@ public final class ExampleStringsTest
 
     assertEquals(1, keys.size());
     assertTrue(keys.contains("example2"));
+  }
+
+  @Test
+  public void testExample3German()
+    throws IOException
+  {
+    final var strings = new ExampleStrings3(Locale.GERMAN);
+    assertEquals("rot", strings.format("Red"));
+    assertNotNull(strings.resources());
+  }
+
+  @Test
+  public void testExample3English()
+    throws IOException
+  {
+    final var strings = new ExampleStrings3(Locale.ENGLISH);
+    assertEquals("red", strings.format("Red"));
+    assertNotNull(strings.resources());
   }
 }

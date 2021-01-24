@@ -19,6 +19,7 @@ package com.io7m.jxtrand.examples;
 import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
 
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * An example where the resource is nonexistent.
@@ -26,9 +27,15 @@ import java.io.IOException;
 
 public final class ExampleStrings1 extends JXTAbstractStrings
 {
-  public ExampleStrings1()
+  public ExampleStrings1(
+    final Locale locale)
     throws IOException
   {
-    super(ExampleStrings1.class, "/com/io7m/jxtrand/examples/Nonexistent");
+    super(
+      locale,
+      ExampleStrings1.class,
+      "/com/io7m/jxtrand/examples",
+      "Nonexistent"
+    );
   }
 }

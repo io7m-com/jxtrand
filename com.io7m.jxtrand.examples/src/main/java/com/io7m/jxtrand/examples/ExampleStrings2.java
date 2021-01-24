@@ -19,6 +19,7 @@ package com.io7m.jxtrand.examples;
 import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
 
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * An example where the resource is not exported.
@@ -26,9 +27,15 @@ import java.io.IOException;
 
 public final class ExampleStrings2 extends JXTAbstractStrings
 {
-  public ExampleStrings2()
+  public ExampleStrings2(
+    final Locale locale)
     throws IOException
   {
-    super(ExampleStrings2.class, "/com/io7m/jxtrand/examples/internal/Messages.xml");
+    super(
+      locale,
+      ExampleStrings2.class,
+      "/com/io7m/jxtrand/examples/internal",
+      "Messages"
+    );
   }
 }

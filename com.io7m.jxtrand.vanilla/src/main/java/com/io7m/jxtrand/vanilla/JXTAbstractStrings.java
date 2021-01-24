@@ -21,6 +21,7 @@ import com.io7m.jxtrand.api.JXTXMLResourceBundlesType;
 import org.osgi.annotation.versioning.ProviderType;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.ServiceLoader;
@@ -42,22 +43,26 @@ public abstract class JXTAbstractStrings implements JXTStringsType
   }
 
   protected JXTAbstractStrings(
+    final Locale locale,
     final Class<?> clazz,
-    final String resourcePath)
+    final String directory,
+    final String name)
     throws IOException
   {
-    this(fromClassResource(clazz, resourcePath));
+    this(fromClassResource(locale, clazz, directory, name));
   }
 
   private static ResourceBundle fromClassResource(
+    final Locale locale,
     final Class<?> clazz,
-    final String resourcePath)
+    final String directory,
+    final String name)
     throws IOException
   {
     return ServiceLoader.load(JXTXMLResourceBundlesType.class)
       .findFirst()
       .orElseThrow()
-      .ofResource(clazz, resourcePath);
+      .ofResource(locale, clazz, directory, name);
   }
 
   @Override
