@@ -20,11 +20,11 @@ import com.io7m.jxtrand.examples.ExampleStrings0;
 import com.io7m.jxtrand.examples.ExampleStrings1;
 import com.io7m.jxtrand.examples.ExampleStrings2;
 import com.io7m.jxtrand.examples.ExampleStrings3;
+import com.io7m.jxtrand.examples.ExampleStrings4;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.NoSuchFileException;
 import java.util.Locale;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -102,6 +102,24 @@ public final class ExampleStringsTest
     throws IOException
   {
     final var strings = new ExampleStrings3(Locale.ENGLISH);
+    assertEquals("red", strings.format("Red"));
+    assertNotNull(strings.resources());
+  }
+
+  @Test
+  public void testExample4German()
+    throws IOException
+  {
+    final var strings = new ExampleStrings4(Locale.GERMAN);
+    assertEquals("rot", strings.format("Red"));
+    assertNotNull(strings.resources());
+  }
+
+  @Test
+  public void testExample4English()
+    throws IOException
+  {
+    final var strings = new ExampleStrings4(Locale.ENGLISH);
     assertEquals("red", strings.format("Red"));
     assertNotNull(strings.resources());
   }

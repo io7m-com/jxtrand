@@ -4,8 +4,14 @@
     <c:release date="2021-01-25T00:00:00+00:00" is-open="false" ticket-system="com.github.io7m.jxtrand" version="1.0.0">
       <c:changes/>
     </c:release>
-    <c:release date="2021-01-25T10:22:59+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="1.1.0">
-      <c:changes/>
+    <c:release date="2021-04-04T09:58:45+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="1.1.0">
+      <c:changes>
+        <c:change date="2021-04-04T09:58:45+00:00" summary="Strip trailing slashes from resource directory names">
+          <c:tickets>
+            <c:ticket id="2"/>
+          </c:tickets>
+        </c:change>
+      </c:changes>
     </c:release>
   </c:releases>
   <c:ticket-systems>

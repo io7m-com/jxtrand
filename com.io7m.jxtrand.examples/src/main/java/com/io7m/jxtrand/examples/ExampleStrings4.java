@@ -14,13 +14,23 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-/**
- * Utility classes for XML string resources (Examples)
- */
-
-@Export
-@Version("1.1.0")
 package com.io7m.jxtrand.examples;
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
+
+import java.io.IOException;
+import java.util.Locale;
+
+/**
+ * An example where the resource has specializations.
+ */
+
+public final class ExampleStrings4 extends JXTAbstractStrings
+{
+  public ExampleStrings4(
+    final Locale locale)
+    throws IOException
+  {
+    super(locale, ExampleStrings4.class, "/com/io7m/jxtrand/examples/", "Red");
+  }
+}

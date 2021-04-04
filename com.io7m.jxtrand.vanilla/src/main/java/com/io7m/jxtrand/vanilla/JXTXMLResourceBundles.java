@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 /**
  * The default provider of XML resource bundles.
@@ -33,6 +34,8 @@ import java.util.ResourceBundle;
 
 public final class JXTXMLResourceBundles implements JXTXMLResourceBundlesType
 {
+  private static final Pattern TRAILING_SLASHES = Pattern.compile("/+$");
+
   /**
    * Construct a provider.
    */
@@ -63,16 +66,20 @@ public final class JXTXMLResourceBundles implements JXTXMLResourceBundlesType
     Objects.requireNonNull(base, "directory");
     Objects.requireNonNull(name, "name");
 
+    final var baseN =
+      TRAILING_SLASHES.matcher(base)
+        .replaceAll("");
+
     final var lang = locale.getLanguage();
     final var country = locale.getCountry();
     final var ex = locale.getVariant();
 
     final var possibleNames =
       List.of(
-        String.format("%s/%s_%s_%s_%s.xml", base, name, lang, country, ex),
-        String.format("%s/%s_%s_%s.xml", base, name, lang, country),
-        String.format("%s/%s_%s.xml", base, name, lang),
-        String.format("%s/%s.xml", base, name)
+        String.format("%s/%s_%s_%s_%s.xml", baseN, name, lang, country, ex),
+        String.format("%s/%s_%s_%s.xml", baseN, name, lang, country),
+        String.format("%s/%s_%s.xml", baseN, name, lang),
+        String.format("%s/%s.xml", baseN, name)
       );
 
     for (final var possibleName : possibleNames) {
@@ -95,7 +102,7 @@ public final class JXTXMLResourceBundles implements JXTXMLResourceBundlesType
     message.append(clazz);
     message.append(System.lineSeparator());
     message.append("  Base: ");
-    message.append(base);
+    message.append(baseN);
     message.append(System.lineSeparator());
     message.append("  Name: ");
     message.append(name);
