@@ -27,6 +27,14 @@ import java.util.Locale;
 
 public final class ExampleStrings1 extends JXTAbstractStrings
 {
+  /**
+   * Construct an example.
+   *
+   * @param locale The locale
+   *
+   * @throws IOException On I/O errors
+   */
+
   public ExampleStrings1(
     final Locale locale)
     throws IOException
