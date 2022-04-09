@@ -16,7 +16,7 @@
 
   <description>Utility classes for XML string resources (Vanilla implementation)</description>
   <name>com.io7m.jxtrand.vanilla</name>
-  <url>https://www.github.com/io7m/jxtrand</url>
+  <url>https://www.io7m.com/software/jxtrand</url>
 
   <dependencies>
     <dependency>
