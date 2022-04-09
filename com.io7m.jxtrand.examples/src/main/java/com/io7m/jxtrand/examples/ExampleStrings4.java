@@ -22,10 +22,10 @@ import java.io.IOException;
 import java.util.Locale;
 
 /**
- * An example where the resource is not exported.
+ * An example where the resource has specializations.
  */
 
-public final class ExampleStrings2 extends JXTAbstractStrings
+public final class ExampleStrings4 extends JXTAbstractStrings
 {
   /**
    * Construct an example.
@@ -35,15 +35,10 @@ public final class ExampleStrings2 extends JXTAbstractStrings
    * @throws IOException On I/O errors
    */
 
-  public ExampleStrings2(
+  public ExampleStrings4(
     final Locale locale)
     throws IOException
   {
-    super(
-      locale,
-      ExampleStrings2.class,
-      "/com/io7m/jxtrand/examples/internal",
-      "Messages"
-    );
+    super(locale, ExampleStrings4.class, "/com/io7m/jxtrand/examples/", "Red");
   }
 }
