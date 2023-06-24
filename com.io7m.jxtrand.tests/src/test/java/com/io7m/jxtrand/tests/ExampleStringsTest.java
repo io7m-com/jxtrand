@@ -21,10 +21,12 @@ import com.io7m.jxtrand.examples.ExampleStrings1;
 import com.io7m.jxtrand.examples.ExampleStrings2;
 import com.io7m.jxtrand.examples.ExampleStrings3;
 import com.io7m.jxtrand.examples.ExampleStrings4;
+import com.io7m.jxtrand.examples.GeneratedRedStrings;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Locale;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -32,6 +34,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -63,7 +66,12 @@ public final class ExampleStringsTest
   @Test
   public void testExample1()
   {
-    assertThrows(FileNotFoundException.class, () -> new ExampleStrings1(Locale.ENGLISH));
+    final var ex =
+      assertThrows(
+        UncheckedIOException.class,
+        () -> new ExampleStrings1(Locale.ENGLISH)
+      );
+    assertInstanceOf(FileNotFoundException.class, ex.getCause());
   }
 
   @Test
@@ -107,11 +115,20 @@ public final class ExampleStringsTest
   }
 
   @Test
+  public void testExample3EnglishTyped()
+    throws IOException
+  {
+    final var strings = new ExampleStrings3(Locale.ENGLISH);
+    assertEquals("red", strings.format(GeneratedRedStrings.RED));
+    assertNotNull(strings.resources());
+  }
+
+  @Test
   public void testExample4German()
     throws IOException
   {
     final var strings = new ExampleStrings4(Locale.GERMAN);
-    assertEquals("rot", strings.format("Red"));
+    assertEquals("rot", strings.format(GeneratedRedStrings.RED));
     assertNotNull(strings.resources());
   }
 
@@ -120,7 +137,7 @@ public final class ExampleStringsTest
     throws IOException
   {
     final var strings = new ExampleStrings4(Locale.ENGLISH);
-    assertEquals("red", strings.format("Red"));
+    assertEquals("red", strings.format(GeneratedRedStrings.RED));
     assertNotNull(strings.resources());
   }
 }

@@ -18,7 +18,6 @@ package com.io7m.jxtrand.examples;
 
 import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
 
-import java.io.IOException;
 import java.util.Locale;
 
 /**
@@ -31,13 +30,10 @@ public final class ExampleStrings1 extends JXTAbstractStrings
    * Construct an example.
    *
    * @param locale The locale
-   *
-   * @throws IOException On I/O errors
    */
 
   public ExampleStrings1(
     final Locale locale)
-    throws IOException
   {
     super(
       locale,

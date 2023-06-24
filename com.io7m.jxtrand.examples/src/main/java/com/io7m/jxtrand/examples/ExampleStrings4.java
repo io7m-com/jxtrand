@@ -16,29 +16,31 @@
 
 package com.io7m.jxtrand.examples;
 
-import com.io7m.jxtrand.vanilla.JXTAbstractStrings;
+import com.io7m.jxtrand.vanilla.JXTAbstractGenericStrings;
 
-import java.io.IOException;
 import java.util.Locale;
 
 /**
  * An example where the resource has specializations.
  */
 
-public final class ExampleStrings4 extends JXTAbstractStrings
+public final class ExampleStrings4
+  extends JXTAbstractGenericStrings<ExampleStringConstantType>
 {
   /**
    * Construct an example.
    *
    * @param locale The locale
-   *
-   * @throws IOException On I/O errors
    */
 
   public ExampleStrings4(
     final Locale locale)
-    throws IOException
   {
-    super(locale, ExampleStrings4.class, "/com/io7m/jxtrand/examples/", "Red");
+    super(
+      locale,
+      ExampleStrings4.class,
+      "/com/io7m/jxtrand/examples/",
+      "Red"
+    );
   }
 }
