@@ -9,7 +9,7 @@
   <parent>
     <artifactId>com.io7m.jxtrand</artifactId>
     <groupId>com.io7m.jxtrand</groupId>
-    <version>2.0.0</version>
+    <version>2.1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>com.io7m.jxtrand.compiler.api</artifactId>
@@ -17,10 +17,6 @@
   <description>Utility classes for XML string resources (Resource compiler API)</description>
   <name>com.io7m.jxtrand.compiler.api</name>
   <url>https://www.io7m.com/software/jxtrand</url>
-
-  <properties>
-    <bnd.baseline.skip>true</bnd.baseline.skip>
-  </properties>
 
   <dependencies>
     <dependency>
