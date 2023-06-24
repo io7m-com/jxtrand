@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,13 +14,20 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
+package com.io7m.jxtrand.api;
+
+import java.util.ResourceBundle;
+
 /**
- * Utility classes for XML string resources (Examples)
+ * Objects that have associated resource bundles.
  */
 
-@Export
-@Version("2.0.0")
-package com.io7m.jxtrand.examples;
+public interface JXTStringsHasResourcesType
+{
+  /**
+   * @return The underlying resource bundle
+   */
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+  ResourceBundle resources();
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,33 +14,39 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.jxtrand.examples;
 
-import com.io7m.jxtrand.vanilla.JXTAbstractGenericStrings;
+package com.io7m.jxtrand.api;
 
-import java.util.Locale;
+import java.text.MessageFormat;
+import java.util.Objects;
 
 /**
- * An example where the resource has specializations.
+ * Formatting functions where the string resource ID is a typed constant.
  */
 
-public final class ExampleStrings4
-  extends JXTAbstractGenericStrings<ExampleStringConstantType>
+public interface JXTStringsTypedType
+  extends JXTStringsHasResourcesType
 {
   /**
-   * Construct an example.
+   * Format a message.
    *
-   * @param locale The locale
+   * @param id   The string resource ID
+   * @param args Any required string format arguments
+   *
+   * @return A formatted string
+   *
+   * @see MessageFormat
    */
 
-  public ExampleStrings4(
-    final Locale locale)
+  default String format(
+    final JXTStringConstantType id,
+    final Object... args)
   {
-    super(
-      locale,
-      ExampleStrings4.class,
-      "/com/io7m/jxtrand/examples/",
-      "Red"
+    Objects.requireNonNull(id, "id");
+    Objects.requireNonNull(args, "args");
+    return MessageFormat.format(
+      this.resources().getString(id.propertyName()),
+      args
     );
   }
 }

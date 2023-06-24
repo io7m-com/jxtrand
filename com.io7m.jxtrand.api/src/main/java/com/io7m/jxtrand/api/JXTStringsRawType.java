@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,13 +14,36 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
+package com.io7m.jxtrand.api;
+
+import java.text.MessageFormat;
+import java.util.Objects;
+
 /**
- * Utility classes for XML string resources (Examples)
+ * Formatting functions where the string resource ID is a raw string.
  */
 
-@Export
-@Version("2.0.0")
-package com.io7m.jxtrand.examples;
+public interface JXTStringsRawType
+  extends JXTStringsHasResourcesType
+{
+  /**
+   * Format a message.
+   *
+   * @param id   The string resource ID
+   * @param args Any required string format arguments
+   *
+   * @return A formatted string
+   *
+   * @see MessageFormat
+   */
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+  default String format(
+    final String id,
+    final Object... args)
+  {
+    Objects.requireNonNull(id, "id");
+    Objects.requireNonNull(args, "args");
+    return MessageFormat.format(this.resources().getString(id), args);
+  }
+}

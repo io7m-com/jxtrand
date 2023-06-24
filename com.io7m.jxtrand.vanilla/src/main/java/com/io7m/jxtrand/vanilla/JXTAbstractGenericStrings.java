@@ -16,7 +16,8 @@
 
 package com.io7m.jxtrand.vanilla;
 
-import com.io7m.jxtrand.api.JXTStringsType;
+import com.io7m.jxtrand.api.JXTStringConstantType;
+import com.io7m.jxtrand.api.JXTStringsGenericType;
 import com.io7m.jxtrand.api.JXTXMLResourceBundlesType;
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -29,21 +30,24 @@ import java.util.ServiceLoader;
 
 /**
  * An abstract string provider.
+ *
+ * @param <T> The generic type of the string constants used
  */
 
 @ProviderType
-public abstract class JXTAbstractStrings implements JXTStringsType
+public abstract class JXTAbstractGenericStrings<T extends JXTStringConstantType>
+  implements JXTStringsGenericType<T>
 {
   private final ResourceBundle resources;
 
-  protected JXTAbstractStrings(
+  protected JXTAbstractGenericStrings(
     final ResourceBundle inResources)
   {
     this.resources =
       Objects.requireNonNull(inResources, "inResources");
   }
 
-  protected JXTAbstractStrings(
+  protected JXTAbstractGenericStrings(
     final Locale locale,
     final Class<?> clazz,
     final String directory,
