@@ -21,7 +21,7 @@ package com.io7m.jxtrand.api;
  */
 
 public interface JXTStringsType
-  extends JXTStringsRawType, JXTStringsTypedType
+  extends JXTStringsTypedType
 {
 
 }

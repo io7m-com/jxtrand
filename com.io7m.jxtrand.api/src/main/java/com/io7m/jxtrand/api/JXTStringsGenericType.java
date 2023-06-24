@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 
 public interface JXTStringsGenericType<T extends JXTStringConstantType>
-  extends JXTStringsHasResourcesType
+  extends JXTStringsRawType
 {
   /**
    * Format a message.

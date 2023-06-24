@@ -25,7 +25,7 @@ import java.util.Objects;
  */
 
 public interface JXTStringsTypedType
-  extends JXTStringsHasResourcesType
+  extends JXTStringsRawType
 {
   /**
    * Format a message.
