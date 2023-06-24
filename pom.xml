@@ -100,7 +100,7 @@
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>1.4.7</version>
+        <version>1.4.8</version>
       </dependency>
       <dependency>
         <groupId>com.beust</groupId>
@@ -180,7 +180,7 @@
       <dependency>
         <groupId>nl.jqno.equalsverifier</groupId>
         <artifactId>equalsverifier</artifactId>
-        <version>3.14.2</version>
+        <version>3.14.3</version>
       </dependency>
       <dependency>
         <groupId>com.github.marschall</groupId>
@@ -190,7 +190,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>5.3.1</version>
+        <version>5.4.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
