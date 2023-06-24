@@ -13,13 +13,13 @@
         </c:change>
       </c:changes>
     </c:release>
-    <c:release date="2023-06-24T14:18:45+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="1.2.0">
+    <c:release date="2023-06-24T20:06:33+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="2.0.0">
       <c:changes>
         <c:change date="2023-06-24T00:00:00+00:00" summary="Add a resource compiler and Maven plugin."/>
         <c:change date="2023-06-24T00:00:00+00:00" summary="Update ch.qos.logback:logback-classic 1.4.7 → 1.4.8."/>
         <c:change date="2023-06-24T00:00:00+00:00" summary="Update nl.jqno.equalsverifier:equalsverifier 3.14.2 → 3.14.3."/>
         <c:change date="2023-06-24T00:00:00+00:00" summary="Update org.mockito:mockito-core 5.3.1 → 5.4.0."/>
-        <c:change compatible="false" date="2023-06-24T14:18:45+00:00" summary="Split up interfaces for stronger typing."/>
+        <c:change compatible="false" date="2023-06-24T00:00:00+00:00" summary="Split up interfaces for stronger typing."/>
       </c:changes>
     </c:release>
   </c:releases>
