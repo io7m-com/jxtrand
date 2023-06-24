@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,13 +14,33 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
+package com.io7m.jxtrand.compiler.basic;
+
+import com.io7m.jxtrand.compiler.api.JXTCompilerConfiguration;
+import com.io7m.jxtrand.compiler.api.JXTCompilerFactoryType;
+import com.io7m.jxtrand.compiler.api.JXTCompilerType;
+import com.io7m.jxtrand.compiler.basic.internal.JXTCompiler;
+
 /**
- * Utility classes for XML string resources (API)
+ * The default factory of resource compilers.
  */
 
-@Export
-@Version("1.1.0")
-package com.io7m.jxtrand.api;
+public final class JXTCompilers implements JXTCompilerFactoryType
+{
+  /**
+   * The default factory of resource compilers.
+   */
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+  public JXTCompilers()
+  {
+
+  }
+
+  @Override
+  public JXTCompilerType createCompiler(
+    final JXTCompilerConfiguration configuration)
+  {
+    return new JXTCompiler(configuration);
+  }
+}

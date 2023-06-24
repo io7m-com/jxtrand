@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,13 +14,22 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+package com.io7m.jxtrand.compiler.api;
+
+import java.io.IOException;
+
 /**
- * Utility classes for XML string resources (API)
+ * A resource compiler.
  */
 
-@Export
-@Version("1.1.0")
-package com.io7m.jxtrand.api;
+public interface JXTCompilerType extends AutoCloseable
+{
+  /**
+   * Execute the compiler, generating Java source files.
+   *
+   * @throws IOException On errors
+   */
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+  void execute()
+    throws IOException;
+}

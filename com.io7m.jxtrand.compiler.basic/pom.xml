@@ -12,11 +12,15 @@
     <version>1.2.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>com.io7m.jxtrand.examples</artifactId>
+  <artifactId>com.io7m.jxtrand.compiler.basic</artifactId>
 
-  <description>Utility classes for XML string resources (Example code)</description>
-  <name>com.io7m.jxtrand.examples</name>
+  <description>Utility classes for XML string resources (Resource compiler)</description>
+  <name>com.io7m.jxtrand.compiler.basic</name>
   <url>https://www.io7m.com/software/jxtrand</url>
+
+  <properties>
+    <bnd.baseline.skip>true</bnd.baseline.skip>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -26,8 +30,13 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>com.io7m.jxtrand.vanilla</artifactId>
+      <artifactId>com.io7m.jxtrand.compiler.api</artifactId>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.io7m.jodist</groupId>
+      <artifactId>com.io7m.jodist</artifactId>
     </dependency>
 
     <dependency>
@@ -41,28 +50,5 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>com.io7m.jxtrand.maven_plugin</artifactId>
-        <version>${project.version}</version>
-        <executions>
-          <execution>
-            <id>generate-resources-0</id>
-            <goals>
-              <goal>generateSources</goal>
-            </goals>
-            <configuration>
-              <inputFile>${project.basedir}/src/main/resources/com/io7m/jxtrand/examples/internal/Messages.xml</inputFile>
-              <packageName>com.io7m.jxtrand.examples</packageName>
-              <className>GeneratedStrings</className>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>

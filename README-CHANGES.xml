@@ -4,13 +4,18 @@
     <c:release date="2021-01-25T00:00:00+00:00" is-open="false" ticket-system="com.github.io7m.jxtrand" version="1.0.0">
       <c:changes/>
     </c:release>
-    <c:release date="2022-04-09T15:34:53+00:00" is-open="false" ticket-system="com.github.io7m.jxtrand" version="1.1.0">
+    <c:release date="2022-04-09T00:00:00+00:00" is-open="false" ticket-system="com.github.io7m.jxtrand" version="1.1.0">
       <c:changes>
         <c:change date="2021-04-04T00:00:00+00:00" summary="Strip trailing slashes from resource directory names">
           <c:tickets>
             <c:ticket id="2"/>
           </c:tickets>
         </c:change>
+      </c:changes>
+    </c:release>
+    <c:release date="2023-06-24T12:04:11+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="1.2.0">
+      <c:changes>
+        <c:change date="2023-06-24T12:04:11+00:00" summary="Add a resource compiler and Maven plugin."/>
       </c:changes>
     </c:release>
   </c:releases>

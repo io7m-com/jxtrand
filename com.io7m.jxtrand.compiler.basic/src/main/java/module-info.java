@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Mark Raynsford <code@io7m.com> http://io7m.com
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -15,12 +15,19 @@
  */
 
 /**
- * Utility classes for XML string resources (API)
+ * Utility classes for XML string resources (Resource compiler)
  */
 
-@Export
-@Version("1.1.0")
-package com.io7m.jxtrand.api;
+module com.io7m.jxtrand.compiler.basic
+{
+  requires static org.osgi.annotation.bundle;
+  requires static org.osgi.annotation.versioning;
 
-import org.osgi.annotation.bundle.Export;
-import org.osgi.annotation.versioning.Version;
+  requires transitive com.io7m.jxtrand.compiler.api;
+
+  requires com.io7m.jxtrand.api;
+  requires com.io7m.jodist;
+  requires java.compiler;
+
+  exports com.io7m.jxtrand.compiler.basic;
+}

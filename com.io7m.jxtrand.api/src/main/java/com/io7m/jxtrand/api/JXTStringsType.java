@@ -51,4 +51,27 @@ public interface JXTStringsType
     Objects.requireNonNull(args, "args");
     return MessageFormat.format(this.resources().getString(id), args);
   }
+
+  /**
+   * Format a message.
+   *
+   * @param id   The string resource ID
+   * @param args Any required string format arguments
+   *
+   * @return A formatted string
+   *
+   * @see MessageFormat
+   */
+
+  default String format(
+    final JXTStringConstantType id,
+    final Object... args)
+  {
+    Objects.requireNonNull(id, "id");
+    Objects.requireNonNull(args, "args");
+    return MessageFormat.format(
+      this.resources().getString(id.propertyName()),
+      args
+    );
+  }
 }
