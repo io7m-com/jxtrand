@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -65,7 +66,8 @@ public final class JXTCompilerTest
         propFile,
         "com.io7m.jxtrand.tests.example",
         "Strings",
-        tempDir
+        tempDir,
+        Optional.empty()
       );
 
     try (var compiler = compilers.createCompiler(configuration)) {
@@ -107,7 +109,8 @@ public final class JXTCompilerTest
         propFile,
         "com.io7m.jxtrand.tests.example",
         "Strings",
-        tempDir
+        tempDir,
+        Optional.empty()
       );
 
     try (var compiler = compilers.createCompiler(configuration)) {

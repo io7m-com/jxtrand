@@ -19,29 +19,33 @@ package com.io7m.jxtrand.compiler.api;
 
 import java.nio.file.Path;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The configuration for a compilation.
  *
- * @param fileInput       The input property file
- * @param packageName     The output package name
- * @param className       The output class name
- * @param directoryOutput The output directory
+ * @param fileInput           The input property file
+ * @param packageName         The output package name
+ * @param className           The output class name
+ * @param directoryOutput     The output directory
+ * @param extraSuperInterface The extra superinterface implemented by strings
  */
 
 public record JXTCompilerConfiguration(
   Path fileInput,
   String packageName,
   String className,
-  Path directoryOutput)
+  Path directoryOutput,
+  Optional<String> extraSuperInterface)
 {
   /**
    * The configuration for a compilation.
    *
-   * @param fileInput       The input property file
-   * @param packageName     The output package name
-   * @param className       The output class name
-   * @param directoryOutput The output directory
+   * @param fileInput           The input property file
+   * @param packageName         The output package name
+   * @param className           The output class name
+   * @param directoryOutput     The output directory
+   * @param extraSuperInterface The extra superinterface implemented by strings
    */
 
   public JXTCompilerConfiguration
@@ -50,5 +54,6 @@ public record JXTCompilerConfiguration(
     Objects.requireNonNull(packageName, "packageName");
     Objects.requireNonNull(className, "className");
     Objects.requireNonNull(directoryOutput, "directoryOutput");
+    Objects.requireNonNull(extraSuperInterface, "extraSuperInterface");
   }
 }

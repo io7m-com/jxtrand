@@ -58,6 +58,7 @@
               <inputFile>${project.basedir}/src/main/resources/com/io7m/jxtrand/examples/internal/Messages.xml</inputFile>
               <packageName>com.io7m.jxtrand.examples</packageName>
               <className>GeneratedStrings</className>
+              <extraSuperInterface>com.io7m.jxtrand.examples.ExampleStringConstantType</extraSuperInterface>
             </configuration>
           </execution>
         </executions>

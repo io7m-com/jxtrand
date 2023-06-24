@@ -89,6 +89,12 @@ public final class JXTCompiler implements JXTCompilerType
     specBuilder.addJavadoc("Automatically generated - DO NOT EDIT.");
     specBuilder.addModifiers(Modifier.PUBLIC);
     specBuilder.addSuperinterface(JXTStringConstantType.class);
+
+    this.configuration.extraSuperInterface()
+      .ifPresent(superI -> {
+        specBuilder.addSuperinterface(ClassName.bestGuess(superI));
+      });
+
     for (final var name : sortedNames) {
       final var enumConstantBuilder =
         TypeSpec.anonymousClassBuilder("")

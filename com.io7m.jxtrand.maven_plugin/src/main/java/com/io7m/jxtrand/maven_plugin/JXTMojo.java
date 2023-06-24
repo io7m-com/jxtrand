@@ -26,6 +26,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.nio.file.Paths;
+import java.util.Optional;
 
 /**
  * The "generate sources" mojo.
@@ -62,6 +63,15 @@ public final class JXTMojo extends AbstractMojo
     name = "className",
     required = true)
   private String className;
+
+  /**
+   * The extra superinterface implemented by string constants.
+   */
+
+  @Parameter(
+    name = "extraSuperInterface",
+    required = false)
+  private String extraSuperInterface;
 
   /**
    * The output directory.
@@ -104,7 +114,8 @@ public final class JXTMojo extends AbstractMojo
           Paths.get(this.inputFile),
           this.packageName,
           this.className,
-          outputPath
+          outputPath,
+          Optional.ofNullable(this.extraSuperInterface)
         );
 
       try (var compiler = compilers.createCompiler(configuration)) {
