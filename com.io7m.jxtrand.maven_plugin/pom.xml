@@ -67,6 +67,9 @@
             <goals>
               <goal>descriptor</goal>
             </goals>
+            <configuration>
+              <goalPrefix>jxtrand</goalPrefix>
+            </configuration>
           </execution>
         </executions>
       </plugin>
