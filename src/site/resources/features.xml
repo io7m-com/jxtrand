@@ -2,11 +2,13 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml">
   <ul>
-    <li>Define string resources as XML</li>
-    <li>Developer-friendly message formatting</li>
-    <li><a href="https://www.osgi.org/">OSGi</a>-ready</li>
-    <li><a href="https://en.wikipedia.org/wiki/Java_Platform_Module_System">JPMS</a>-ready</li>
-    <li>High coverage automated test suite</li>
-    <li>ISC license</li>
+    <li>Define string resources as XML in a standardized format.</li>
+    <li>Developer-friendly message formatting API.</li>
+    <li>Maven plugin for generating type-safe string resource accessors; no more `MissingResourceException` errors!</li>
+    <li>Written in pure Java 17.</li>
+    <li><a href="https://www.osgi.org/">OSGi</a>-ready.</li>
+    <li><a href="https://en.wikipedia.org/wiki/Java_Platform_Module_System">JPMS</a>-ready.</li>
+    <li>High coverage automated test suite.</li>
+    <li>ISC license.</li>
   </ul>
 </div>

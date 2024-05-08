@@ -4,7 +4,7 @@ jxtrand
 [![Maven Central](https://img.shields.io/maven-central/v/com.io7m.jxtrand/com.io7m.jxtrand.svg?style=flat-square)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.io7m.jxtrand%22)
 [![Maven Central (snapshot)](https://img.shields.io/nexus/s/com.io7m.jxtrand/com.io7m.jxtrand?server=https%3A%2F%2Fs01.oss.sonatype.org&style=flat-square)](https://s01.oss.sonatype.org/content/repositories/snapshots/com/io7m/jxtrand/)
 [![Codecov](https://img.shields.io/codecov/c/github/io7m-com/jxtrand.svg?style=flat-square)](https://codecov.io/gh/io7m-com/jxtrand)
-![Java Version](https://img.shields.io/badge/21-java?label=java&color=e6c35c)
+![Java Version](https://img.shields.io/badge/17-java?label=java&color=e65cc3)
 
 ![com.io7m.jxtrand](./src/site/resources/jxtrand.jpg?raw=true)
 
@@ -19,6 +19,17 @@ jxtrand
 
 Utility classes for XML string resources, and referential integrity for
 string resources.
+
+## Features
+
+* Define string resources as XML in a standardized format.
+* Developer-friendly message formatting API.
+* Maven plugin for generating type-safe string resource accessors; no more `MissingResourceException` errors!
+* Written in pure Java 17.
+* [OSGi](https://www.osgi.org/) ready.
+* [JPMS](https://en.wikipedia.org/wiki/Java_Platform_Module_System) ready.
+* ISC license.
+* High-coverage automated test suite.
 
 ## Motivation
 
