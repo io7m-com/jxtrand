@@ -22,8 +22,16 @@
         <c:change compatible="false" date="2023-06-24T00:00:00+00:00" summary="Split up interfaces for stronger typing."/>
       </c:changes>
     </c:release>
-    <c:release date="2024-05-10T09:44:51+00:00" is-open="true" ticket-system="com.github.io7m.jxtrand" version="2.1.0">
-      <c:changes/>
+    <c:release date="2024-05-10T09:45:58+00:00" is-open="false" ticket-system="com.github.io7m.jxtrand" version="2.1.0">
+      <c:changes>
+        <c:change date="2024-04-20T00:00:00+00:00" summary="Update nl.jqno.equalsverifier:equalsverifier:3.15.5 → 3.16.1."/>
+        <c:change date="2024-04-20T00:00:00+00:00" summary="Update org.slf4j:slf4j-api:2.0.10 → 2.0.13."/>
+        <c:change date="2024-04-20T00:00:00+00:00" summary="Update junit.version:5.10.1 → 5.10.2."/>
+        <c:change date="2024-04-22T00:00:00+00:00" summary="Update ch.qos.logback:logback-classic:1.4.14 → 1.5.6."/>
+        <c:change date="2024-04-22T00:00:00+00:00" summary="Update com.github.marschall:memoryfilesystem:2.7.0 → 2.8.0."/>
+        <c:change date="2024-04-22T00:00:00+00:00" summary="Update org.mockito:mockito-core:5.8.0 → 5.11.0."/>
+        <c:change date="2024-05-07T00:00:00+00:00" summary="Update org.apache.maven.plugins:maven-plugin-plugin:3.12.0 → 3.13.0."/>
+      </c:changes>
     </c:release>
   </c:releases>
   <c:ticket-systems>
