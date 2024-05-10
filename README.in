@@ -4,6 +4,17 @@
 Utility classes for XML string resources, and referential integrity for
 string resources.
 
+## Features
+
+* Define string resources as XML in a standardized format.
+* Developer-friendly message formatting API.
+* Maven plugin for generating type-safe string resource accessors; no more `MissingResourceException` errors!
+* Written in pure Java 17.
+* [OSGi](https://www.osgi.org/) ready.
+* [JPMS](https://en.wikipedia.org/wiki/Java_Platform_Module_System) ready.
+* ISC license.
+* High-coverage automated test suite.
+
 ## Motivation
 
 Java exposes string resources that can be localized using the `ResourceBundle`
