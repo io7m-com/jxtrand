@@ -23,8 +23,13 @@ module com.io7m.jxtrand.examples
   requires static org.osgi.annotation.bundle;
   requires static org.osgi.annotation.versioning;
 
-  requires transitive com.io7m.jxtrand.api;
+  requires com.io7m.jxtrand.api;
   requires com.io7m.jxtrand.vanilla;
+
+  opens com.io7m.jxtrand.examples to
+    com.io7m.jxtrand.vanilla;
+  opens com.io7m.jxtrand.examples.internal to
+    com.io7m.jxtrand.vanilla;
 
   exports com.io7m.jxtrand.examples;
 }
