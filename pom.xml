@@ -37,7 +37,7 @@
     <io7m.java.targetJavaVersion>17</io7m.java.targetJavaVersion>
 
     <!-- Third-party dependencies. -->
-    <io7m.maven-api.version>3.9.11</io7m.maven-api.version>
+    <io7m.maven-api.version>3.9.12</io7m.maven-api.version>
     <org.junit.version>5.14.2</org.junit.version>
   </properties>
 
