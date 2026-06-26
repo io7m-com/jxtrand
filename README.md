@@ -1,12 +1,227 @@
-ERROR com.io7m.ghrepostools.Main : The specified command does not exist.
-  Command    : README
-  Error Code : command-nonexistent
+jxtrand
+===
 
-DEBUG com.io7m.ghrepostools.Main : Exception: 
-com.io7m.quarrel.core.QException: The specified command does not exist.
-	at com.io7m.quarrel.core.QApplication.parseExpanded(QApplication.java:244)
-	at com.io7m.quarrel.core.QApplication.parse(QApplication.java:152)
-	at com.io7m.quarrel.core.QApplicationType.run(QApplicationType.java:94)
-	at com.io7m.ghrepostools.Main.run(Main.java:126)
-	at com.io7m.ghrepostools.Main.mainExitless(Main.java:110)
-	at com.io7m.ghrepostools.Main.main(Main.java:95)
+[![Maven Central](https://img.shields.io/maven-central/v/com.io7m.jxtrand/com.io7m.jxtrand.svg?style=flat-square)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.io7m.jxtrand%22)
+[![Maven Central (snapshot)](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fcom%2Fio7m%2Fjxtrand%2Fcom.io7m.jxtrand%2Fmaven-metadata.xml&style=flat-square)](https://central.sonatype.com/repository/maven-snapshots/com/io7m/jxtrand/)
+[![Codecov](https://img.shields.io/codecov/c/github/io7m-com/jxtrand.svg?style=flat-square)](https://codecov.io/gh/io7m-com/jxtrand)
+![Java Version](https://img.shields.io/badge/17-java?label=java&color=e65cc3)
+
+![com.io7m.jxtrand](./src/site/resources/jxtrand.jpg?raw=true)
+
+| JVM | Platform | Status |
+|-----|----------|--------|
+| OpenJDK (Temurin) Current | Linux | [![Build (OpenJDK (Temurin) Current, Linux)](https://img.shields.io/github/actions/workflow/status/io7m-com/jxtrand/main.linux.temurin.current.yml)](https://www.github.com/io7m-com/jxtrand/actions?query=workflow%3Amain.linux.temurin.current)|
+| OpenJDK (Temurin) LTS | Linux | [![Build (OpenJDK (Temurin) LTS, Linux)](https://img.shields.io/github/actions/workflow/status/io7m-com/jxtrand/main.linux.temurin.lts.yml)](https://www.github.com/io7m-com/jxtrand/actions?query=workflow%3Amain.linux.temurin.lts)|
+| OpenJDK (Temurin) Current | Windows | [![Build (OpenJDK (Temurin) Current, Windows)](https://img.shields.io/github/actions/workflow/status/io7m-com/jxtrand/main.windows.temurin.current.yml)](https://www.github.com/io7m-com/jxtrand/actions?query=workflow%3Amain.windows.temurin.current)|
+| OpenJDK (Temurin) LTS | Windows | [![Build (OpenJDK (Temurin) LTS, Windows)](https://img.shields.io/github/actions/workflow/status/io7m-com/jxtrand/main.windows.temurin.lts.yml)](https://www.github.com/io7m-com/jxtrand/actions?query=workflow%3Amain.windows.temurin.lts)|
+
+## Repository Relocation
+
+Development of this project has moved to an
+[open-source but not open-contribution](https://sqlite.org/copyright.html#notopencontrib)
+model.
+
+Source code and commits will remain publicly available perpetually, but issues
+and/or pull requests will be rejected and/or ignored. Additionally, this project
+will now only be available via a read-only mirror at:
+
+  https://codeberg.org/io7m-com/jxtrand
+
+
+## jxtrand
+
+Utility classes for XML string resources, and referential integrity for
+string resources.
+
+## Features
+
+* Define string resources as XML in a standardized format.
+* Developer-friendly message formatting API.
+* Maven plugin for generating type-safe string resource accessors; no more `MissingResourceException` errors!
+* Written in pure Java 17.
+* [OSGi](https://www.osgi.org/) ready.
+* [JPMS](https://en.wikipedia.org/wiki/Java_Platform_Module_System) ready.
+* ISC license.
+* High-coverage automated test suite.
+
+## Motivation
+
+Java exposes string resources that can be localized using the `ResourceBundle`
+class. This can be backed by properties in a line-oriented text format. This
+text format is somewhat convenient for developers, but suffers from being
+line-oriented and whitespace sensitive; it becomes awkward to add significant
+whitespace in strings. Java properties can also be represented in an XML-based
+format that handles this better, but there is no built-in support for
+loading a `ResourceBundle` from an XML file. Additionally, the actual logic
+used by the `ResourceBundle` class to find property files is confusing and
+complex.
+
+Lastly, Java applications using localized strings have the property names
+as string constants in the code. This means the code is free to drift out
+of sync with the property files; code can refer to properties that do not
+exist, and properties can become unused without much in the way of tool support
+to detect unused properties.
+
+## Usage
+
+### XML Files
+
+The `jxtrand` package provides a convenient abstract class to load resources
+from XML property files. For example, an application could define the following
+class:
+
+```
+/**
+ * An example where the resource is exported.
+ */
+
+public final class ExampleStrings0 extends JXTAbstractStrings
+{
+  /**
+   * Construct an example.
+   *
+   * @param locale The locale
+   *
+   * @throws IOException On I/O errors
+   */
+
+  public ExampleStrings0(final Locale locale)
+    throws IOException
+  {
+    super(
+      locale,
+      ExampleStrings0.class,
+      "/com/io7m/jxtrand/examples",
+      "Messages"
+    );
+  }
+}
+```
+
+The class takes a `Locale` as an argument, and will look in the directory
+`/com/io7m/jxtrand/examples` in the module containing `ExampleStrings0.class`;
+`jxtrand` is module-aware.
+
+Given:
+
+```
+final var lang = locale.getLanguage();
+final var country = locale.getCountry();
+final var ex = locale.getVariant();
+```
+
+The lookup procedure will look at the following files in order:
+
+```
+ /com/io7m/jxtrand/examples/Messages_${lang}_${country}_${ex}.xml
+ /com/io7m/jxtrand/examples/Messages_${lang}_${country}.xml
+ /com/io7m/jxtrand/examples/Messages_${lang}.xml
+ /com/io7m/jxtrand/examples/Messages.xml
+```
+
+### Modules
+
+When using `jxtrand` in a modular context, the `jxtrand` will need to be
+able to search, reflectively, for resources inside application modules.
+Therefore, those modules need to be open for reflection to `jxtrand`. The
+following is typically necessary in module descriptors (assuming that
+resource files are kept in `/com/io7m/example/internal`:
+
+```
+module com.io7m.example
+{
+  opens com.io7m.example.internal
+    to com.io7m.jxtrand.vanilla;
+
+  exports com.io7m.example;
+}
+```
+
+### Resource Compiler
+
+The `jxtrand` package provides a simple resource compiler that can produce
+`enum` classes from string property files (in XML or line-based formats).
+
+Given a property file such as:
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+  <entry key="error.01">Error 1!</entry>
+  <entry key="example2">Example 2</entry>
+</properties>
+```
+
+The compiler can produce an `enum` file such as:
+
+```
+public enum Strings implements JXTStringConstantType
+{
+  ERROR_01 {
+    @Override
+    public String propertyName()
+    {
+      return "error.01";
+    }
+  },
+
+  EXAMPLE2 {
+    @Override
+    public String propertyName()
+    {
+      return "example2";
+    }
+  }
+}
+```
+
+These constants can be used directly with instances of the `JXTStringsType`
+class:
+
+
+```
+JXTStringsType resources;
+
+String formatted = resources.format(ERROR_01);
+```
+
+### Maven Plugin
+
+The `jxtrand` package publishes a Maven plugin to perform resource compilation
+as part of a build. Use a plugin execution similar to the following:
+
+```
+<build>
+  <plugins>
+    <plugin>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>com.io7m.jxtrand.maven_plugin</artifactId>
+      <version>${project.version}</version>
+      <executions>
+        <execution>
+          <id>generate-resources-0</id>
+          <goals>
+            <goal>generateSources</goal>
+          </goals>
+          <configuration>
+            <inputFile>${project.basedir}/src/main/resources/com/io7m/jxtrand/examples/internal/Messages.xml</inputFile>
+            <packageName>com.io7m.jxtrand.examples</packageName>
+            <className>GeneratedStrings</className>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+In the above example, the file `src/main/resources/com/io7m/jxtrand/examples/internal/Messages.xml`
+would be used to generate a Java class `com.io7m.jxtrand.examples.GeneratedStrings`. The
+class is generated as a plain Java source file and is placed in
+`${project.build.directory}/generated-sources/jxtrand` by default
+(and the `jxtrand` directory is registered as a generated source directory
+automatically).
+
